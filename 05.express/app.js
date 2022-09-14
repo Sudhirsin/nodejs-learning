@@ -3,23 +3,27 @@ const bodyParser = require('body-parser');
 
 const path = require('path')
 
-
 const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const pageNotFoundRoute = require('./routes/404');
 
 const app = express();
 
+// adding template engine
+// pug will support out of box with express
+app.set('view engine', 'pug')
+app.set('views', 'views');
+
 const PORT = 5000
 
 app.use(bodyParser.urlencoded({ extended: false })) // it will use to parse the body
 
- 
+
 // use will allowed add middleware
 // it will executed on every request
 app.use((req, res, next) => { // First middleware
-    console.log('This is middleware')
-    next() // will allow to go to next middleware other wise after that middleware didn't work
+  console.log('This is middleware')
+  next() // will allow to go to next middleware other wise after that middleware didn't work
 })
 
 // 2nd middleware
@@ -67,10 +71,12 @@ app.use(shopRoutes);
 // app.use(pageNotFoundRoute);
 // or
 app.use((req, res, next) => {
-    // serving html form views
-    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'))
-    // or 
-    // res.status(404).send(`<h1>Page not found</h1>`)
+  // serving html form views
+  // res.status(404).sendFile(path.join(__dirname, 'views', '404.html'))
+  // or
+  res.status(404).render('404', { pageTitle: 'Page Not found' });
+  // or 
+  // res.status(404).send(`<h1>Page not found</h1>`)
 })
 
 // app.get('/product', (req, res, next) => {
@@ -84,10 +90,10 @@ app.use((req, res, next) => {
 
 
 app.listen(5000, () => {
-    console.log(`Server started listening on http://localhost:${PORT}`)
+  console.log(`Server started listening on http://localhost:${PORT}`)
 })
 
- 
+
 
 
 

@@ -11,3 +11,9 @@ Alternative to express
 04. Sails ... so many there
 
 But express is bit more famous.
+
+
+// Templating engine 
+1. ejs - `<p> <% name %> </p>`
+2. pub - `p #{name}`
+3. handlenars - `<p>{{ naem }} </p>`
