@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const handlebars = require('express-handlebars')
 
 const path = require('path')
 
@@ -11,8 +12,15 @@ const app = express();
 
 // adding template engine
 // pug will support out of box with express
-app.set('view engine', 'pug')
+// app.set('view engine', 'pug')
+// app.set('views', 'views');
+
+// setup handlebar as engine
+app.use('handlebars', handlebars());
+app.set('view engine', 'handlebars')
 app.set('views', 'views');
+
+
 
 const PORT = 5000
 
