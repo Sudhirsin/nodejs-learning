@@ -2,7 +2,7 @@ const path = require('path');
 
 const express = require('express');
 
-const rootDir = require('../util/path');
+// const rootDir = require('../util/path');
 
 const { getAddProduct, postAddProduct, getProducts, getEditProduct, postEditProduct, deleteProduct }  = require('../controllers/admin')
 
