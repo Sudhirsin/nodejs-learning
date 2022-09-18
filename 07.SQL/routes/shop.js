@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { getProducts, getIndex, getCart, getCheckout, getOrders, getProduct, postCart, postDeleteCartItem } = require('../controllers/shop')
+const { getProducts, getIndex, getCart, getCheckout, getOrders, getProduct, postCart, postDeleteCartItem, postOrder } = require('../controllers/shop')
 
 const router = express.Router();
 
@@ -11,6 +11,7 @@ router.get('products/:productId', getProduct) // /products/12323
 router.get('/cart', getCart)
 router.post('/cart', postCart)
 router.post('/cart-delete-item', postDeleteCartItem)
+router.post('/create-order', postOrder)
 router.get('/orders', getOrders)
 router.get('/checkout', getCheckout)
 
